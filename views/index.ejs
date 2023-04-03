@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/97ab0026dc.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('./partials/nav.ejs') %>
+
+    <div class="newperson">
+      <div class="main">
+        <button id="newuser" onclick="showHide()">New Entry</button><br />
+        <form class="userform" id="userForm">
+          <span>
+            <i class="fa-solid fa-hashtag"></i>
+            <input
+              id="tithe"
+              type="number"
+              placeholder="Tithe Number"
+              name="titheNumber"
+              required
+            /> </span
+          ><br />
+
+          <span>
+            <i class="fa fa-user"></i>
+            <input
+              id="fname"
+              type="text"
+              placeholder="First Name"
+              name="firstName"
+              required
+            /> </span
+          ><br />
+
+          <span>
+            <i class="fa-solid fa-coins"></i>
+            <input
+              id="amount "
+              type="number"
+              placeholder="Amount"
+              name="amount"
+              required
+            /> </span
+          ><br />
+
+          <button id="addEntry" onclick="addEntry()">Add Entry</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card mt-5">
+      <div class="pcard-header">
+        <h2>Tithes</h2>
+      </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tr class="bg-dark text-white">
+              <td>Tithe Number</td>
+              <td>First Name</td>
+              <td>Amount</td>
+            </tr>
+
+            <tr class="tithesArray">
+              <td> <% tithes.forEach(tithe => { %>
+                <li><%= tithe.Tithe_no %></li>
+              <% }) %></td>
+              <td> <% tithes.forEach(tithe => { %>
+                <li><%= tithe.First_Name %></li>
+              <% }) %></td>
+              <td> <% tithes.forEach(tithe => { %>
+                <li><%= tithe.Amount %></li>
+              <% }) %></td>
+              </tr>
+          </table>
+        </div>
+    
+  </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

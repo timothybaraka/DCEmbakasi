@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.listen(3000, () => {
   process.on("uncaughtException", function (err) {
     // Handle the error safely
+    // console.log("This is the error:");
     console.log(err);
   });
 });
@@ -117,6 +118,29 @@ app.get('/people', (req, res) => {
     res.render('people.ejs', { people: results });
     });
   });
+
+  // Update the row with the specified ID
+// const updateRow = (id, newData) => {
+//   const sql = `UPDATE people SET tithe_no=?, first_name = ?, last_name = ? ,contact = ? WHERE tithe_no = ?`;
+
+//   connection.query(sql, [newData.tithe_no, newData.first_name, newData.last_name, newData.contact], (err, result) => {
+//     if (err) {
+//       console.error('Error updating row: ', err);
+//     } else {
+//       console.log('Row updated successfully!');
+//     }
+//   });
+// };
+
+// Handle button click event to update the row with ID '123' with new data
+// const button = document.getElementById('updateButton');
+// button.addEventListener('click', () => {
+//   const id = '123';
+//   const newData = { tithe_no: 'John Doe', first_name: 30, last_name: '123 Main St',contact:232332 };
+
+//   updateRow(id, newData);
+// });
+
 
 //404 page if ther's no match with the other requests then this runs
 app.use((req, res) => {

@@ -312,3 +312,35 @@ body {
   border-radius: 5px;
   box-shadow: 2px 2px 5px #ccc;
 }
+/* tables styling */
+.resultsCard{
+  width: 30%;
+  margin: auto;
+  margin-top: 2%;
+  border-radius:25px ;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  cursor: pointer;
+  background-color: white;
+  
+}
+.tableTitle{
+  margin-bottom: 5%  ;
+  
+}
+table{
+  /* align-items: center; */
+}
+.tableHeadings th{
+  background-color: #83acf1;
+  /* color: white; */
+}
+.tableHeadings td, .contentArray td{
+  border: 1px solid #ddd;
+    padding: 8px;
+}
+.contentArray li{
+  list-style: none;
+  
+}

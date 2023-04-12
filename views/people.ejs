@@ -40,13 +40,13 @@
      
    
       
-        <div class="card mt-5">
-          <div class="pcard-header">
+        <div class="resultsCard">
+          <div class="tableTitle">
             <h2>Fetch data from db</h2>
           </div>
             <div class="card-body">
-              <table class="table table-bordered">
-                <tr class="bg-dark text-white">
+              <table class="table">
+                <tr class="tableHeadings">
                   <td>Tithe Number</td>
                   <td>First Name</td>
                   <td>Last Name</td>
@@ -55,7 +55,7 @@
                   <td>Delete</td>
                 </tr>
 
-                <tr class="peopleArray">
+                <tr class="contentArray">
                   <td> <% people.forEach(user => { %>
                     <li><%= user.tithe_no %></li>
                   <% }) %></td>

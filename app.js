@@ -108,7 +108,22 @@ app.post("/submit", function (req, res) {
   });
 });
 
-
+function deleteRecord() {
+  
+  alert('Today is Sunday');
+   
+  const sql = 'DELETE FROM tithes WHERE tithe_no = 1';
+  var deleteIcon = document.getElementById('deleteTithe');
+  // Handle the icon click event and execute the SQL query
+  deleteIcon.addEventListener('click', async () => {
+    try {
+      const [rowsAffected] = await connection.execute(sql, [itemId]);
+      console.log(`Deleted ${rowsAffected} row(s)`);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+}
 
 app.get('/people', (req, res) => {
   const query = 'SELECT * FROM people';

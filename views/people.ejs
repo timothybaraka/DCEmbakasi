@@ -56,18 +56,16 @@
                 </tr>
 
                 <tr class="contentArray">
-                  <td> <% people.forEach(user => { %>
-                    <li><%= user.tithe_no %></li>
-                  <% }) %></td>
-                  <td><% people.forEach(user => { %>
-                    <li><%= user.first_name %></li>
-                  <% }) %></td>
-                  <td><% people.forEach(user => { %>
-                    <li><%= user.last_name %></li>
-                  <% }) %></td>
-                  <td><% people.forEach(user => { %>
-                    <li><%= user.contact %></li>
-                  <% }) %></td>
+                   <% people.forEach(user => { %>
+                    <tr>
+                      <td><%= user.tithe_no %></td>
+                      <td><%= user.first_name %></td>
+                      <td><%= user.last_name %></td>
+                      <td><%= user.contact %></td>
+                      <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                      <td><i class="fa fa-trash" aria-hidden="true" onclick="deleteRecord()"></i></td>
+                    </tr>
+                  <% }) %>
                  
                   </tr>
               </table>

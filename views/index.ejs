@@ -70,20 +70,13 @@
             </tr>
 
             <tr class="contentArray">
-              <td> <% tithes.forEach(tithe => { %>
-                <li><%= tithe.tithe_no %></li>
-              <% }) %></td>
-              <td> <% tithes.forEach(tithe => { %>
-                <li><%= tithe.first_name %></li>
-              <% }) %></td>
-              <td> <% tithes.forEach(tithe => { %>
-                <li><%= tithe.amount %></li>
-              <% }) %></td>
-              <td> <% tithes.forEach(tithe => { %>
-                <li><i class="fa fa-pencil" aria-hidden="true"></i></li>
-              <% }) %></td>
-              <td> <% tithes.forEach(tithe => { %>
-                <li id="deleteTithe" name="deleteTithe"><i class="fa fa-trash" aria-hidden="true"></i></li>
+              <% tithes.forEach(tithe => { %>
+                <tr>
+                <td><%= tithe.tithe_no %></td>
+                <td><%= tithe.first_name %></td>
+                <td><%= tithe.amount %></td>
+                <td><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                <td id="deleteTithe" name="deleteTithe"><i class="fa fa-trash" aria-hidden="true"></i></td>
               <% }) %></td>
               </tr>
           </table>

@@ -317,7 +317,7 @@ body {
 }
 /* tables styling */
 .resultsCard{
-  width: 30%;
+  width: max-content;
   margin: auto;
   margin-top: 2%;
   border-radius:25px ;

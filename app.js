@@ -65,18 +65,7 @@ app.post('/login', (req, res) => {
   }
 });
 
-// app.get('/home', (req, res) => {
-//   if (req.session.loggedin) {
-//     res.render('home.ejs', { username: req.session.username });
-//   } else {
-//     res.redirect('/');
-//   }
-// });
 
-// app.get("/", (req, res) => {
-  
-//   res.render("index");
-// });
 app.get('/', (req, res) => {
   const query = 'SELECT * FROM tithes';
   connection.query(query, (err, results) => {
@@ -108,53 +97,30 @@ app.post("/submit", function (req, res) {
   });
 });
 
-function deleteRecord() {
+app.post("/delete",function (req,res) {
+  var titheNo = req.body.titheNumber;
+  console.log(titheNo);
+  var sql = 'DELETE FROM tithes WHERE tithe_no = "${titheNo}"';
+
+  connection.query(sql, function (err, results) {
+    if (err)throw err;
+    console.log("record deleted");
+    res.redirect("/people");
+  })
+
+ 
   
-  alert('Today is Sunday');
-   
-  const sql = 'DELETE FROM tithes WHERE tithe_no = 1';
-  var deleteIcon = document.getElementById('deleteTithe');
-  // Handle the icon click event and execute the SQL query
-  deleteIcon.addEventListener('click', async () => {
-    try {
-      const [rowsAffected] = await connection.execute(sql, [itemId]);
-      console.log(`Deleted ${rowsAffected} row(s)`);
-    } catch (error) {
-      console.error(error);
-    }
-  });
-}
+})
 
 app.get('/people', (req, res) => {
   const query = 'SELECT * FROM people';
   connection.query(query, (err, results) => {
-    console.log(results);
     if (err) throw err;
     res.render('people.ejs', { people: results });
     });
   });
 
-  // Update the row with the specified ID
-// const updateRow = (id, newData) => {
-//   const sql = `UPDATE people SET tithe_no=?, first_name = ?, last_name = ? ,contact = ? WHERE tithe_no = ?`;
-
-//   connection.query(sql, [newData.tithe_no, newData.first_name, newData.last_name, newData.contact], (err, result) => {
-//     if (err) {
-//       console.error('Error updating row: ', err);
-//     } else {
-//       console.log('Row updated successfully!');
-//     }
-//   });
-// };
-
-// Handle button click event to update the row with ID '123' with new data
-// const button = document.getElementById('updateButton');
-// button.addEventListener('click', () => {
-//   const id = '123';
-//   const newData = { tithe_no: 'John Doe', first_name: 30, last_name: '123 Main St',contact:232332 };
-
-//   updateRow(id, newData);
-// });
+  
 
 
 //404 page if ther's no match with the other requests then this runs

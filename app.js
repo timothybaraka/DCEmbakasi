@@ -10,6 +10,7 @@ const app = express();
 //register view engine
 app.set("view engine", "ejs");
 app.set("views", "views");
+
 //middleware and static files.Files made  public to the browser are stored here including css.
 app.use(express.static("public"));
 app.use(flash());
@@ -100,9 +101,9 @@ app.post("/submit", function (req, res) {
 app.post("/delete",function (req,res) {
   var titheNo = req.body.titheNumber;
   console.log(titheNo);
-  var sql = 'DELETE FROM tithes WHERE tithe_no = "${titheNo}"';
+  var sqli = "DELETE FROM tithes WHERE tithe_no = '${titheNo}'";
 
-  connection.query(sql, function (err, results) {
+  connection.query(sqli, function (err, results) {
     if (err)throw err;
     console.log("record deleted");
     res.redirect("/people");
@@ -128,5 +129,5 @@ app.use((req, res) => {
   res.status(404).render("404");
 });
 
-//listen for requests
+
 

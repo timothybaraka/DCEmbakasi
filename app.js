@@ -101,19 +101,17 @@ app.post("/submit", function (req, res) {
 app.post("/delete",function (req,res) {
   var titheNo = req.body.titheNumber;
   console.log(titheNo);
-  var sqli = "DELETE FROM tithes WHERE tithe_no = '${titheNo}'";
-
-  connection.query(sqli, function (err, results) {
-    if (err)throw err;
-    console.log("record deleted");
-    res.redirect("/people");
-  })
-
- 
   
-})
-
-app.get('/people', (req, res) => {
+    connection.query('DELETE FROM tithes WHERE tithe_no = ?', [titheNo], (err, rows, fields) => {
+      if (!err)
+      console.log('Record deleted successfully');
+      else
+      console.log(err);
+      });
+      res.redirect("/people");
+      });
+      
+ app.get('/people', (req, res) => {
   const query = 'SELECT * FROM people';
   connection.query(query, (err, results) => {
     if (err) throw err;
@@ -121,9 +119,7 @@ app.get('/people', (req, res) => {
     });
   });
 
-  
-
-
+ 
 //404 page if ther's no match with the other requests then this runs
 app.use((req, res) => {
   res.status(404).render("404");

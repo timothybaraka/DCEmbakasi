@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const flash = require("express-flash");
 const session = require("express-session");
 const { Session } = require("inspector");
+const { connect } = require("http2");
 
 //express app
 const app = express();
@@ -95,6 +96,20 @@ app.post("/submit", function (req, res) {
     console.log("Record Inserted");
     req.flash("success", "Data added successfully!");
     res.redirect("/people");
+  });
+});
+
+app.get('/edit:titheNo',(req,res)=>{
+  const titheNo = req.params.titheNo;
+  console.log(titheNo);
+  let sql = 'SELECT * FROM tithes WHERE tithe_no = ${titheNo}';
+  
+  let query = connection.query(sql,(err,result)=>{
+    if (err) throw err;
+    res.render("user_edit",{
+      title:'CRUD Operation',
+      user:result[0]
+    });
   });
 });
 

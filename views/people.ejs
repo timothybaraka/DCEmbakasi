@@ -70,6 +70,7 @@
       <div class="card-body">
         <table class="table">
           <tr class="tableHeadings">
+            <th>Id</th>
             <th>Tithe Number</th>
             <th>First Name</th>
             <th>Last Name</th>
@@ -78,25 +79,23 @@
             <th>Delete</th>
           </tr>
 
-          <% people.forEach(user => { %>
-          <tr class="contentArray">
-            <td><%= user.tithe_no %></td>
-            <td><%= user.first_name %></td>
-            <td><%= user.last_name %></td>
-            <td><%= user.contact %></td>
-            <td><a href="/edit<%= user.tithe_no %>"> <button class="btn edit">Edit</button></a></td>
-            <td>
-             
+         
+              <% if(people.length > 0){%>
+                <% for (var i=0; i < people.length; i++){%>
+                  <tr class="contentArray">
+                    <td><%= people[i].userId %></td>
+                    <td><%= people[i].tithe_no %></td>
+                    <td><%= people[i].first_name %></td>
+                    <td><%= people[i].last_name %></td>
+                    <td><%= people[i].contact %></td>
+                    <td><a href="update/?userId=<%- people[i].userId %>"> <button class="btn edit">Edit</button></a></td>
+                    <td>
               <button class="btn delete">Delete</button>
 
-              <!-- <form action="/delete" method="post">
-                <input type="hidden" value="<%= user.tithe_no %>" name="titheNumber"/>
-                <button id="deleteRecord" type="submit" value="delete">Delete</button>
-                <input type="submit" value="&#xf2ed;" style="font-family: 'Font Awesome 5 Free'; cursor: pointer"/>
-              </form> -->
+              
             </td>
           </tr>
-          <% }) %>
+          <% }} %>
         </table>
       </div>
     </div>

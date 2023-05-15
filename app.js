@@ -99,22 +99,24 @@ app.post("/submit", function (req, res) {
   });
 });
 
-app.get('/edit:titheNo',(req,res)=>{
-  const titheNo = req.params.titheNo;
-  console.log(titheNo);
-  let sql = 'SELECT * FROM tithes WHERE tithe_no = ${titheNo}';
-  
-  let query = connection.query(sql,(err,result)=>{
-    if (err) throw err;
-    res.render("user_edit",{
-      title:'CRUD Operation',
-      user:result[0]
-    });
-  });
+app.get('/update',(req,res)=>{
+  connection.connect(function (error) {
+    if (error) console.log(error);
+
+    var sql = "select * from people where userId = ?;";
+    var userId = req.query.userId;
+    console.log(userId);
+    
+    connection.query(sql,[userId],function(error,result){
+      if (error) console.log(error);
+      res.render('update',{people:result})
+    })
+    
+  })
 });
 
 app.post("/delete",function (req,res) {
-  var titheNo = req.body.titheNumber;
+  let titheNo = req.body.titheNumber;
   console.log(titheNo);
   
     connection.query('DELETE FROM tithes WHERE tithe_no = ?', [titheNo], (err, rows, fields) => {

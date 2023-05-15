@@ -15,7 +15,10 @@
       <div class="main">
         <button id="newuser" onclick="showHide()">New User</button><br />
 
-        <form class="userform" id="userForm" action="updateData" method="POST">
+        <form class="userform" id="userForm" action="/updateData" method="POST">
+          <span>
+            <i class="fa-solid fa-hashtag"></i>
+            <input type="number" id="userId" placeholder="Id" value="<%= people[0].userId %>" name="userId" required /> </span><br />
           <span>
             <i class="fa-solid fa-hashtag"></i>
             <input type="number" id="titheNo" placeholder="Tithe Number" value="<%= people[0].tithe_no %>" name="titheNumber" required /> </span><br />

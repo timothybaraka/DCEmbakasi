@@ -115,16 +115,22 @@ app.get('/update',(req,res)=>{
   })
 });
 app.post('/updateData', function(req,res){
-  
+  var userId = req.body.userId;
   var titheNumber = req.body.titheNumber;
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
-  var conatct = req.body.contact;
+  var contact = req.body.contact;
 
   console.log(titheNumber,firstName,lastName,contact);
 
-  
+  var sql = "UPDATE people SET tithe_no=?,first_name=?,last_name=?,contact=? where userId=?; ";
+   connection.query(sql,[titheNumber,firstName,lastName,contact,userId],function(error,result){
+    if(error) console.log(error);
+    console.log("Record Updated");
+    res.redirect("/people");
+   })
 })
+
 
 app.post("/delete",function (req,res) {
   let titheNo = req.body.titheNumber;

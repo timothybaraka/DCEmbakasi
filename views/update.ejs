@@ -15,11 +15,7 @@
       <div class="main">
         <button id="newuser" onclick="showHide()">New User</button><br />
 
-        <form class="userform" id="userForm" action="/" method="POST">
-          
-          <span>
-            <i class="fa-solid "></i>
-            <input type="text" id="titheNo" placeholder="Tithe Number" value="<%= people[0].userId %>" name="id" disabled /> </span><br />
+        <form class="userform" id="userForm" action="updateData" method="POST">
           <span>
             <i class="fa-solid fa-hashtag"></i>
             <input type="number" id="titheNo" placeholder="Tithe Number" value="<%= people[0].tithe_no %>" name="titheNumber" required /> </span><br />
@@ -32,7 +28,7 @@
           <span>
             <i class="fa-solid fa-phone-flip"></i>
             <input type="number" id="contact" placeholder="Contact" value="<%= people[0].contact %>" name="contact" required/> </span><br />
-          <button id="addUser" type="submit" value="submit">Add Use</button>
+          <button id="addUser" type="submit" value="submit">Update User</button>
         </form>
       </div>
     </div>

@@ -114,6 +114,17 @@ app.get('/update',(req,res)=>{
     
   })
 });
+app.post('/updateData', function(req,res){
+  
+  var titheNumber = req.body.titheNumber;
+  var firstName = req.body.firstName;
+  var lastName = req.body.lastName;
+  var conatct = req.body.contact;
+
+  console.log(titheNumber,firstName,lastName,contact);
+
+  
+})
 
 app.post("/delete",function (req,res) {
   let titheNo = req.body.titheNumber;

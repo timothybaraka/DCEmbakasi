@@ -99,6 +99,7 @@ app.post("/submit", function (req, res) {
   });
 });
 
+//Update a record then commit the changes to the db
 app.get('/update',(req,res)=>{
   connection.connect(function (error) {
     if (error) console.log(error);

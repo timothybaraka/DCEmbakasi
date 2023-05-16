@@ -133,18 +133,23 @@ app.post('/updateData', function(req,res){
 })
 
 
-app.post("/delete",function (req,res) {
-  let titheNo = req.body.titheNumber;
-  console.log(titheNo);
+app.get("/delete",function (req,res) {
   
-    connection.query('DELETE FROM tithes WHERE tithe_no = ?', [titheNo], (err, rows, fields) => {
-      if (!err)
-      console.log('Record deleted successfully');
-      else
-      console.log(err);
-      });
+    
+
+    var sql ='DELETE FROM people WHERE userId = ?';
+    var userId = req.query.userId;
+
+    connection.query(sql,[userId],function (error,result) {
+      if (error) console.log(error);
+      console.log("Record deleted successfully");
       res.redirect("/people");
-      });
+      
+    })
+  
+});
+
+  
       
  app.get('/people', (req, res) => {
   const query = 'SELECT * FROM people';

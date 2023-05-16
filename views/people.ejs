@@ -89,11 +89,7 @@
                     <td><%= people[i].last_name %></td>
                     <td><%= people[i].contact %></td>
                     <td><a href="update/?userId=<%- people[i].userId %>"> <button class="btn edit">Edit</button></a></td>
-                    <td>
-              <button class="btn delete">Delete</button>
-
-              
-            </td>
+                    <td><a href="delete/?userId=<%- people[i].userId %>"> <button class="btn delete">Delete</button></a></td>
           </tr>
           <% }} %>
         </table>
